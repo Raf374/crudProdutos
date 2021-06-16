@@ -12,10 +12,13 @@
 	$db = $conexao->getConnection();
 	$item = new Empregados($db);
 
+	$item->codigo = $_GET['codigo'];
 	$item->nome = $_GET['nome'];
-	$item->email = $_GET['email'];
-	$item->cargo = $_GET['cargo'];
-	$item->data_entrada = date('d-m-Y H:i:s');
+	$item->descrição = $_GET['descrição'];
+	$item->quantidade = $_GET['quantidade'];
+	$item->valor_unitario = $_GET['valor_unitario'];
+	$item->data_entrada = date('d-m-Y');
+    $item->imagem = $_FILES['imagem']['tmp_name'];
 
 	if($item->createEmpregados()){
 		echo 'Empregado criado com sucesso.';
